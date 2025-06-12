@@ -31,3 +31,46 @@
       color: var(--color-skyblue);
       user-select: none;
     }
+/* Estilo activo del enlace de la barra de navegación */
+    .nav-link-active {
+      border-b-4: solid var(--color-skyblue);
+      color: var(--color-skyblue);
+      font-weight: 700;
+    }
+
+  /*Estilos de asientos*/
+    .seat {
+      width: 32px;
+      height: 32px;
+      margin: 4px;
+      border-radius: 6px;
+      background-color: #e0f2fe; /* lighter skyblue */
+      border: 1.5px solid var(--color-skyblue);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      user-select: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .seat:hover {
+      background-color: var(--color-skyblue);
+      color: var(--color-white);
+      transform: scale(1.1);
+    }
+
+    .seat.selected {
+      background-color: var(--color-black);
+      color: var(--color-white);
+      cursor: default;
+    }
+
+    .seat.taken {
+      background-color: #94a3b8; /* gris */
+      border-color: #64748b;
+      cursor: not-allowed;
+      color: #334155;
+    }
