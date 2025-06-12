@@ -84,3 +84,30 @@
       margin-bottom: 1rem;
       box-shadow: 0 4px 8px rgb(14 165 233 / 0.3);
     }
+
+  /* Fondo modal */
+    .modal-backdrop {
+      backdrop-filter: blur(8px) saturate(150%);
+      background-color: rgba(15, 23, 42, 0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    /* Contenedor modal */
+    .modal-content {
+      background: linear-gradient(145deg, #e0f7ff, #c0e9ff);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 90vw;
+      max-width: 400px;
+      color: var(--color-black);
+      position: relative;
+    }
