@@ -705,3 +705,12 @@
           return;
         }
 
+            // Obtener título de la película
+        const movieObj = movies.find(m => m.id === movie);
+        const movieTitle = movieObj ? movieObj.title : movie;
+        
+        // Para la demostración, solo muestre el mensaje de confirmación
+        purchaseMessage.textContent = Compra exitosa para "${movieTitle}" - ${selectedTime} - Asientos: ${[...selectedSeats].join(', ')};
+        purchaseMessage.classList.remove('hidden');
+        
+
