@@ -713,4 +713,23 @@
         purchaseMessage.textContent = Compra exitosa para "${movieTitle}" - ${selectedTime} - Asientos: ${[...selectedSeats].join(', ')};
         purchaseMessage.classList.remove('hidden');
         
+// Restablecer todo
+        selectedMovie = '';
+        selectedTime = '';
+        selectedSeats.clear();
+        currentSelection = null;
+        ticketForm.reset();
+        renderTimeSlots();
+        renderSeats();
+        updateSelectionBox();
+      });
 
+      // Inicializar
+      renderMovies();
+      showPage('home');
+    })();
+  </script>
+
+</body>
+
+</html>
