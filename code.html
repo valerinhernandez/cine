@@ -568,3 +568,42 @@
           timeSlots.appendChild(timeButton);
         });
       }
+
+         // Cuadro de selección de actualización
+      function updateSelectionBox() {
+        if (!selectedMovie || !selectedTime) {
+          selectionBox.classList.add('hidden');
+          currentSelection = null;
+          return;
+        }
+
+        const movie = movies.find(m => m.id === selectedMovie);
+        if (!movie) {
+          selectionBox.classList.add('hidden');
+          currentSelection = null;
+          return;
+        }
+
+        currentSelection = {
+          movie: movie,
+          time: selectedTime,
+          seats: [...selectedSeats]
+        };
+
+        selectionContent.innerHTML = `
+          <div class="mb-2">
+            <strong>Película:</strong> ${movie.title}
+          </div>
+          <div class="mb-2">
+            <strong>Horario:</strong> ${selectedTime}
+          </div>
+          ${selectedSeats.size > 0 ? `
+            <div class="mb-2">
+              <strong>Asientos:</strong> ${[...selectedSeats].join(', ')}
+            </div>
+          ` : ''}
+        `;
+
+        selectionBox.classList.remove('hidden');
+      }
+
