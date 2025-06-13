@@ -526,3 +526,45 @@
           loginError.classList.remove('hidden');
           return;
         }
+// Simular inicio de sesión exitoso
+        loginModal.classList.add('hidden');
+        loginForm.reset();
+        alert(Bienvenido, ${username}!);
+      });
+
+      // Renderizar franjas horarias
+      function renderTimeSlots() {
+        timeSlots.innerHTML = '';
+        if (!selectedMovie) {
+          timeSlotSection.classList.add('hidden');
+          return;
+        }
+
+        const movie = movies.find(m => m.id === selectedMovie);
+        if (!movie) {
+          timeSlotSection.classList.add('hidden');
+          return;
+        }
+
+        timeSlotSection.classList.remove('hidden');
+        movie.times.forEach(time => {
+          const timeButton = document.createElement('button');
+          timeButton.type = 'button';
+          timeButton.className = 'time-slot';
+          timeButton.textContent = time;
+          if (selectedTime === time) {
+            timeButton.classList.add('selected');
+          }
+          timeButton.addEventListener('click', () => {
+            selectedTime = time;
+            renderTimeSlots();
+            updateSelectionBox();
+            // Mostrar alerta cuando se selecciona la hora
+            if (selectedMovie && selectedTime) {
+              const movieTitle = movies.find(m => m.id === selectedMovie)?.title || '';
+              alert(¡Horario guardado! ${movieTitle} - ${selectedTime});
+            }
+          });
+          timeSlots.appendChild(timeButton);
+        });
+      }
