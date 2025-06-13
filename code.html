@@ -469,3 +469,31 @@
           link.classList.toggle('text-sky-600', link.dataset.page === page);
           link.classList.toggle('font-bold', link.dataset.page === page);
         });
+
+         // Cerrar el menú móvil en la navegación
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+        // Restablecer el mensaje de compra en la página de compra
+        if (page === 'comprar') {
+          purchaseMessage.classList.add('hidden');
+          purchaseMessage.textContent = '';
+          // Restablecer formulario y selecciones en la navegación para comprar
+          selectedSeats.clear();
+          selectedTime = '';
+          renderSeats();
+          renderTimeSlots();
+          ticketForm.reset();
+          updateSelectionBox();
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const page = e.target.dataset.page;
+          if (page) {
+            showPage(page);
+          }
+        });
+       });
