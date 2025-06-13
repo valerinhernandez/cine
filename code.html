@@ -242,4 +242,35 @@
           <h2 class="text-3xl font-bold mb-3" style="color: var(--color-skyblue);">Comprar Boletos</h2>
           <p class="text-gray-700 max-w-3xl mb-4">Selecciona tu película, elige tus asientos y realiza la compra.</p>
         </header>
+<!-- Cuadro de resumen de selección -->
+        <div id="selectionBox" class="selection-box max-w-3xl mx-auto mb-6 hidden">
+          <h3 class="font-bold text-lg mb-2" style="color: var(--color-skyblue);">Tu Selección</h3>
+          <div id="selectionContent"></div>
+          <button id="cancelSelection" class="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-smooth mt-2">Cancelar Selección</button>
+        </div>
 
+        <form id="ticketForm" class="space-y-6 bg-white p-6 rounded-xl shadow-lg max-w-3xl mx-auto">
+          <div>
+            <label for="movieSelect" class="block font-semibold mb-1">Película</label>
+            <select id="movieSelect" name="movie" required class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-sky-400">
+              <option value="" disabled selected>Selecciona una película</option>
+            </select>
+          </div>
+
+          <div id="timeSlotSection" class="hidden">
+            <label class="block font-semibold mb-2">Horarios Disponibles</label>
+            <div id="timeSlots" class="flex flex-wrap"></div>
+          </div>
+
+          <fieldset aria-labelledby="seatsLabel" class="border border-gray-200 p-4 rounded-md">
+            <legend id="seatsLabel" class="font-semibold mb-4">Seleccione sus asientos</legend>
+            <div id="seatMap" class="grid grid-cols-8 justify-center gap-2" role="list" aria-describedby="seatsDesc"></div>
+            <p id="seatsDesc" class="text-sm text-gray-500 mt-2">Haz clic en un asiento para seleccionar o deseleccionar.</p>
+          </fieldset>
+
+          <div>
+            <button type="submit" class="bg-sky-500 text-white w-full py-3 font-semibold rounded-lg hover:bg-sky-600 transition-smooth focus:outline-none">Comprar Boletos</button>
+          </div>
+          <div id="purchaseMessage" role="alert" class="hidden text-center text-green-700 font-semibold"></div>
+        </form>
+      </article>
