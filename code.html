@@ -607,3 +607,62 @@
         selectionBox.classList.remove('hidden');
       }
 
+        // Cancelar selección
+      cancelSelection.addEventListener('click', () => {
+        selectedMovie = '';
+        selectedTime = '';
+        selectedSeats.clear();
+        currentSelection = null;
+        movieSelect.value = '';
+        renderTimeSlots();
+        renderSeats();
+        updateSelectionBox();
+        alert('Selección cancelada');
+      });
+
+      // Función de representación del mapa de asientos
+      function renderSeats() {
+        seatMap.innerHTML = '';
+        for (let r = 0; r < rows.length; r++) {
+          for (let c = 1; c <= cols; c++) {
+            const seatId = rows[r] + c;
+            const seat = document.createElement('button');
+            seat.type = 'button';
+            seat.className = 'seat transition-smooth';
+            seat.textContent = seatId;
+            seat.setAttribute('aria-label', "Asiento " + seatId);
+            seat.setAttribute('role', 'listitem');
+
+            if (takenSeats.has(seatId)) {
+              seat.classList.add('taken');
+              seat.disabled = true;
+              seat.setAttribute('aria-disabled', 'true');
+            } else if (selectedSeats.has(seatId)) {
+              seat.classList.add('selected');
+              seat.setAttribute('aria-pressed', 'true');
+            } else {
+              seat.setAttribute('aria-pressed', 'false');
+            }
+
+            seat.addEventListener('click', () => {
+              if (seat.classList.contains('taken')) return;
+              if (selectedSeats.has(seatId)) {
+                selectedSeats.delete(seatId);
+                seat.classList.remove('selected');
+                seat.setAttribute('aria-pressed', 'false');
+              } else {
+                selectedSeats.add(seatId);
+                seat.classList.add('selected');
+                seat.setAttribute('aria-pressed', 'true');
+              }
+              updateSelectionBox();
+            });
+
+            seatMap.appendChild(seat);
+          }
+        }
+      }
+
+      renderSeats();
+
+
