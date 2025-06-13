@@ -664,5 +664,44 @@
       }
 
       renderSeats();
+// Cambio de selección de película: sincronizar con la navegación desde la página de Cartelera
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-select-movie')) {
+          selectedMovie = e.target.dataset.movie || '';
+          movieSelect.value = selectedMovie;
+          selectedTime = '';
+          selectedSeats.clear();
+          renderTimeSlots();
+          renderSeats();
+          updateSelectionBox();
+          showPage('comprar');
+        }
+      });
 
+      // Restablecer la selección de asientos si la película cambió
+      movieSelect.addEventListener('change', () => {
+        selectedMovie = movieSelect.value;
+        selectedTime = '';
+        selectedSeats.clear();
+        renderTimeSlots();
+        renderSeats();
+        updateSelectionBox();
+      });
+
+      // Envío del formulario de ticket
+      ticketForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const movie = movieSelect.value;
+        if (!movie) {
+          alert('Por favor, seleccione una película.');
+          return;
+        }
+        if (!selectedTime) {
+          alert('Por favor, seleccione un horario.');
+          return;
+        }
+        if (selectedSeats.size === 0) {
+          alert('Por favor, seleccione al menos un asiento.');
+          return;
+        }
 
