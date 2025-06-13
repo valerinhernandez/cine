@@ -296,6 +296,27 @@
           </article>
         </section>
       </article>
+
+       <!-- Modal de inicio de sesión -->
+  <div id="loginModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="loginLabel" aria-describedby="loginDesc">
+    <div class="modal-content">
+      <button id="closeLogin" class="modal-close" aria-label="Cerrar ventana de login">&times;</button>
+      <h2 id="loginLabel" class="text-2xl font-bold mb-4 text-center" style="color: var(--color-skyblue);">Iniciar Sesión</h2>
+      <p id="loginDesc" class="text-gray-700 mb-6 text-center">Ingrese sus credenciales para acceder.</p>
+      <form id="loginForm" class="space-y-4" autocomplete="off" novalidate>
+        <div>
+          <label for="username" class="block font-semibold mb-1">Usuario</label>
+          <input id="username" name="username" type="text" required minlength="3" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-sky-400" />
+        </div>
+        <div>
+          <label for="password" class="block font-semibold mb-1">Contraseña</label>
+          <input id="password" name="password" type="password" required minlength="6" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-sky-400" />
+        </div>
+        <button type="submit" class="bg-sky-500 text-white w-full py-3 font-semibold rounded-lg hover:bg-sky-600 transition-smooth focus:outline-none">Entrar</button>
+        <div id="loginError" class="text-red-700 font-semibold mt-2 hidden" role="alert"></div>
+      </form>
+    </div>
+  </div>
     </section>
   </main>
 
