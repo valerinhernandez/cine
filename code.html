@@ -497,3 +497,32 @@
           }
         });
        });
+// Alternancia del modo de inicio de sesión
+      loginBtn.addEventListener('click', () => {
+        loginModal.classList.remove('hidden');
+        document.getElementById('username').focus();
+      });
+      closeLogin.addEventListener('click', () => {
+        loginModal.classList.add('hidden');
+        loginError.classList.add('hidden');
+        loginForm.reset();
+      });
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) { // Al hacer clic fuera del contenido modal, se cierra.
+          loginModal.classList.add('hidden');
+          loginError.classList.add('hidden');
+          loginForm.reset();
+        }
+      });
+
+      // Envío del formulario de inicio de sesión: validaciones ficticias con gestión de éxito
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        loginError.classList.add('hidden');
+        const username = loginForm.username.value.trim();
+        const password = loginForm.password.value.trim();
+        if (username.length < 3 || password.length < 6) {
+          loginError.textContent = 'Usuario o contraseña inválidos.';
+          loginError.classList.remove('hidden');
+          return;
+        }
