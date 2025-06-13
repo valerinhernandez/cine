@@ -427,4 +427,45 @@
           // Añadir a la cuadrícula de películas
           const movieCard = document.createElement('article');
           movieCard.className = 'rounded-xl shadow-lg overflow-hidden transition-smooth hover:shadow-xl bg-white';
-      
+      movieCard.innerHTML = `
+            <img class="w-full h-48 object-cover" src="${movie.image}" alt="Poster película ${movie.title}" />
+            <div class="p-4">
+              <h3 class="font-semibold text-xl mb-2 text-black">${movie.title}</h3>
+              <p class="text-gray-600 text-sm mb-1"><strong>Duración:</strong> ${movie.duration}</p>
+              <p class="text-gray-600 text-sm mb-1"><strong>Género:</strong> ${movie.genre}</p>
+              <p class="text-gray-600 text-sm mb-2"><strong>Clasificación:</strong> ${movie.rating}</p>
+              <p class="text-gray-700 text-sm mb-3">${movie.description}</p>
+              <div class="mb-3">
+                <p class="text-sm font-semibold mb-1">Horarios:</p>
+                <div class="flex flex-wrap gap-1">
+                  ${movie.times.map(time => <span class="bg-sky-100 text-sky-800 px-2 py-1 rounded text-xs">${time}</span>).join('')}
+                </div>
+              </div>
+              <button data-movie="${movie.id}" class="btn-select-movie bg-sky-500 text-white px-3 py-2 rounded-lg font-semibold w-full hover:bg-sky-600 transition-smooth focus:outline-none">Comprar Boletos</button>
+            </div>
+          `;
+          movieGrid.appendChild(movieCard);
+
+          // Agregar al menú desplegable de selección
+          const option = document.createElement('option');
+          option.value = movie.id;
+          option.textContent = movie.title;
+          movieSelect.appendChild(option);
+        });
+      }
+
+      // Activar o desactivar el menú móvil
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Función de navegación para mostrar páginas
+      function showPage(page) {
+        currentPage = page;
+        pages.forEach(p => {
+          p.classList.toggle('hidden', p.id !== 'page-' + page);
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('text-sky-600', link.dataset.page === page);
+          link.classList.toggle('font-bold', link.dataset.page === page);
+        });
