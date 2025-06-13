@@ -7,7 +7,8 @@
   <title>Cine Y&V - Compra de Boletos</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  /*Colores personalizados*/
+  <style>
+    /*Colores personalizados*/
     :root {
       --color-skyblue: #0ea5e9;
       --color-black: #000000;
@@ -31,7 +32,8 @@
       color: var(--color-skyblue);
       user-select: none;
     }
-/* Estilo activo del enlace de la barra de navegación */
+
+  /* Estilo activo del enlace de la barra de navegación */
     .nav-link-active {
       border-b-4: solid var(--color-skyblue);
       color: var(--color-skyblue);
@@ -74,8 +76,8 @@
       cursor: not-allowed;
       color: #334155;
     }
-  
-   /* Notificaciones */
+
+ /* Notificaciones */
     .notification {
       background: linear-gradient(90deg, #38bdf8, #0284c7);
       color: white;
@@ -85,7 +87,7 @@
       box-shadow: 0 4px 8px rgb(14 165 233 / 0.3);
     }
 
-  /* Fondo modal */
+    /* Fondo modal */
     .modal-backdrop {
       backdrop-filter: blur(8px) saturate(150%);
       background-color: rgba(15, 23, 42, 0.7);
@@ -112,7 +114,7 @@
       position: relative;
     }
 
-   /Botón cerrar/
+    /*Botón cerrar*/
     .modal-close {
       position: absolute;
       top: 0.75rem;
@@ -123,7 +125,8 @@
       cursor: pointer;
       user-select: none;
     }
-/* Estilos de cuadro de selección */
+
+    /* Estilos de cuadro de selección */
     .selection-box {
       background: linear-gradient(145deg, #e0f7ff, #bfdbfe);
       border: 2px solid var(--color-skyblue);
@@ -144,7 +147,8 @@
       display: inline-block;
       font-weight: 600;
     }
- .time-slot:hover {
+
+    .time-slot:hover {
       background-color: var(--color-skyblue);
       color: var(--color-white);
     }
@@ -152,8 +156,9 @@
     .time-slot.selected {
       background-color: var(--color-black);
       color: var(--color-white);
-    }
- /* Esquemas de enfoque */
+    }
+
+    /* Esquemas de enfoque */
     a:focus,
     button:focus,
     input:focus,
@@ -165,8 +170,8 @@
 
   </style>
 </head>
-  
-  <body class="bg-white text-black min-h-screen flex flex-col">
+
+<body class="bg-white text-black min-h-screen flex flex-col">
 
   <!-- Barra de navegación -->
   <header class="sticky top-0 bg-white shadow-md z-40">
@@ -190,7 +195,7 @@
         </button>
       </div>
     </nav>
-      <!-- Menú móvil -->
+    <!-- Menú móvil -->
     <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
       <ul class="flex flex-col p-4 space-y-4 font-semibold text-gray-800 text-lg">
         <li><button data-page="home" class="nav-link transition-smooth hover:text-sky-500 w-full text-left">Inicio</button></li>
@@ -200,6 +205,7 @@
       </ul>
     </div>
   </header>
+
   <!-- Contenedor de contenido principal -->
   <main class="flex-grow container mx-auto p-4 md:p-8 max-w-6xl">
 
@@ -211,7 +217,7 @@
         <header class="mb-8">
           <h1 class="text-4xl md:text-5xl font-extrabold mb-4" style="color: var(--color-skyblue);">Bienvenido a Cine Y&V</h1>
           <p class="text-gray-700 text-lg md:text-xl max-w-3xl">Disfruta de tus películas favoritas en la mejor calidad y con la comodidad que mereces.</p>
- </header>
+        </header>
         <section aria-label="Notificaciones" class="space-y-4">
           <div class="notification" role="alert">
             🎬 Nuevo Estreno: "Invasión Estelar" llega esta semana a nuestras salas.
@@ -224,8 +230,8 @@
           </div>
         </section>
       </article>
-      
-        <!-- Página de Cartelera -->
+
+      <!-- Página de Cartelera -->
       <article id="page-cartelera" class="page hidden" role="main" aria-label="Cartelera - Películas en cartelera">
         <header class="mb-6">
           <h2 class="text-3xl font-bold mb-3" style="color: var(--color-skyblue);">Cartelera Actual</h2>
@@ -234,7 +240,7 @@
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="movieGrid">
           <!-- Las películas se renderizarán aquí -->
         </section>
-      </article> 
+      </article>
 
       <!-- Página de Comprar Boletos -->
       <article id="page-comprar" class="page hidden" role="main" aria-label="Compra de boletos">
@@ -242,7 +248,8 @@
           <h2 class="text-3xl font-bold mb-3" style="color: var(--color-skyblue);">Comprar Boletos</h2>
           <p class="text-gray-700 max-w-3xl mb-4">Selecciona tu película, elige tus asientos y realiza la compra.</p>
         </header>
-<!-- Cuadro de resumen de selección -->
+
+        <!-- Cuadro de resumen de selección -->
         <div id="selectionBox" class="selection-box max-w-3xl mx-auto mb-6 hidden">
           <h3 class="font-bold text-lg mb-2" style="color: var(--color-skyblue);">Tu Selección</h3>
           <div id="selectionContent"></div>
@@ -274,8 +281,8 @@
           <div id="purchaseMessage" role="alert" class="hidden text-center text-green-700 font-semibold"></div>
         </form>
       </article>
-      
- <!-- Página de promociones -->
+
+      <!-- Página de promociones -->
       <article id="page-promociones" class="page hidden" role="main" aria-label="Promociones y ofertas">
         <header class="mb-6">
           <h2 class="text-3xl font-bold mb-3" style="color: var(--color-skyblue);">Promociones</h2>
@@ -296,8 +303,10 @@
           </article>
         </section>
       </article>
+    </section>
+  </main>
 
-       <!-- Modal de inicio de sesión -->
+  <!-- Modal de inicio de sesión -->
   <div id="loginModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="loginLabel" aria-describedby="loginDesc">
     <div class="modal-content">
       <button id="closeLogin" class="modal-close" aria-label="Cerrar ventana de login">&times;</button>
@@ -317,9 +326,8 @@
       </form>
     </div>
   </div>
-    </section>
-  </main>
-<script>
+
+  <script>
     (() => {
         // datos de la  pelicula
       const movies = [
@@ -385,7 +393,7 @@
         }
       ];
 
-         // Elementos
+      // Elementos
       const navLinks = document.querySelectorAll('.nav-link');
       const pages = document.querySelectorAll('.page');
       const loginModal = document.getElementById('loginModal');
@@ -406,7 +414,7 @@
       const selectionContent = document.getElementById('selectionContent');
       const cancelSelection = document.getElementById('cancelSelection');
 
-         // Estado
+      // Estado
       let currentPage = 'home';
       let selectedSeats = new Set();
       let takenSeats = new Set(['A3', 'B5', 'C7']); // example taken seats to show unavailable
@@ -427,7 +435,7 @@
           // Añadir a la cuadrícula de películas
           const movieCard = document.createElement('article');
           movieCard.className = 'rounded-xl shadow-lg overflow-hidden transition-smooth hover:shadow-xl bg-white';
-      movieCard.innerHTML = `
+          movieCard.innerHTML = `
             <img class="w-full h-48 object-cover" src="${movie.image}" alt="Poster película ${movie.title}" />
             <div class="p-4">
               <h3 class="font-semibold text-xl mb-2 text-black">${movie.title}</h3>
@@ -438,7 +446,7 @@
               <div class="mb-3">
                 <p class="text-sm font-semibold mb-1">Horarios:</p>
                 <div class="flex flex-wrap gap-1">
-                  ${movie.times.map(time => <span class="bg-sky-100 text-sky-800 px-2 py-1 rounded text-xs">${time}</span>).join('')}
+                  ${movie.times.map(time => `<span class="bg-sky-100 text-sky-800 px-2 py-1 rounded text-xs">${time}</span>`).join('')}
                 </div>
               </div>
               <button data-movie="${movie.id}" class="btn-select-movie bg-sky-500 text-white px-3 py-2 rounded-lg font-semibold w-full hover:bg-sky-600 transition-smooth focus:outline-none">Comprar Boletos</button>
@@ -469,8 +477,7 @@
           link.classList.toggle('text-sky-600', link.dataset.page === page);
           link.classList.toggle('font-bold', link.dataset.page === page);
         });
-
-         // Cerrar el menú móvil en la navegación
+        // Cerrar el menú móvil en la navegación
         if (!mobileMenu.classList.contains('hidden')) {
           mobileMenu.classList.add('hidden');
         }
@@ -496,8 +503,9 @@
             showPage(page);
           }
         });
-       });
-// Alternancia del modo de inicio de sesión
+      });
+
+      // Alternancia del modo de inicio de sesión
       loginBtn.addEventListener('click', () => {
         loginModal.classList.remove('hidden');
         document.getElementById('username').focus();
@@ -526,10 +534,10 @@
           loginError.classList.remove('hidden');
           return;
         }
-// Simular inicio de sesión exitoso
+        // Simular inicio de sesión exitoso
         loginModal.classList.add('hidden');
         loginForm.reset();
-        alert(Bienvenido, ${username}!);
+        alert(`Bienvenido, ${username}!`);
       });
 
       // Renderizar franjas horarias
@@ -562,14 +570,14 @@
             // Mostrar alerta cuando se selecciona la hora
             if (selectedMovie && selectedTime) {
               const movieTitle = movies.find(m => m.id === selectedMovie)?.title || '';
-              alert(¡Horario guardado! ${movieTitle} - ${selectedTime});
+              alert(`¡Horario guardado! ${movieTitle} - ${selectedTime}`);
             }
           });
           timeSlots.appendChild(timeButton);
         });
       }
 
-         // Cuadro de selección de actualización
+      // Cuadro de selección de actualización
       function updateSelectionBox() {
         if (!selectedMovie || !selectedTime) {
           selectionBox.classList.add('hidden');
@@ -607,7 +615,7 @@
         selectionBox.classList.remove('hidden');
       }
 
-        // Cancelar selección
+      // Cancelar selección
       cancelSelection.addEventListener('click', () => {
         selectedMovie = '';
         selectedTime = '';
@@ -664,7 +672,8 @@
       }
 
       renderSeats();
-// Cambio de selección de película: sincronizar con la navegación desde la página de Cartelera
+
+      // Cambio de selección de película: sincronizar con la navegación desde la página de Cartelera
       document.addEventListener('click', (e) => {
         if (e.target.classList.contains('btn-select-movie')) {
           selectedMovie = e.target.dataset.movie || '';
@@ -704,16 +713,16 @@
           alert('Por favor, seleccione al menos un asiento.');
           return;
         }
-
-            // Obtener título de la película
+        
+        // Obtener título de la película
         const movieObj = movies.find(m => m.id === movie);
         const movieTitle = movieObj ? movieObj.title : movie;
         
         // Para la demostración, solo muestre el mensaje de confirmación
-        purchaseMessage.textContent = Compra exitosa para "${movieTitle}" - ${selectedTime} - Asientos: ${[...selectedSeats].join(', ')};
+        purchaseMessage.textContent = `Compra exitosa para "${movieTitle}" - ${selectedTime} - Asientos: ${[...selectedSeats].join(', ')}`;
         purchaseMessage.classList.remove('hidden');
         
-// Restablecer todo
+        // Restablecer todo
         selectedMovie = '';
         selectedTime = '';
         selectedSeats.clear();
