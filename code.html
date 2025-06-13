@@ -406,4 +406,25 @@
       const selectionContent = document.getElementById('selectionContent');
       const cancelSelection = document.getElementById('cancelSelection');
 
+         // Estado
+      let currentPage = 'home';
+      let selectedSeats = new Set();
+      let takenSeats = new Set(['A3', 'B5', 'C7']); // example taken seats to show unavailable
+      let selectedMovie = '';
+      let selectedTime = '';
+      let currentSelection = null;
+
+      // Filas y columnas de asientos para el mapa
+      const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
+      const cols = 8;
+
+      // Renderizar películas en cartelera
+      function renderMovies() {
+        movieGrid.innerHTML = '';
+        movieSelect.innerHTML = '<option value="" disabled selected>Selecciona una película</option>';
+        
+        movies.forEach(movie => {
+          // Añadir a la cuadrícula de películas
+          const movieCard = document.createElement('article');
+          movieCard.className = 'rounded-xl shadow-lg overflow-hidden transition-smooth hover:shadow-xl bg-white';
       
